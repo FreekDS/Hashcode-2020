@@ -37,30 +37,7 @@ from Outputgenerator import *
 
 def orderLibraries(daysamount, pointsamount, libraries):
     libraries.sort(key=lambda lib: ((len(lib.books) / lib.get_scan_limit()) / lib.get_signup_time()), reverse=True)
-    # order libraries in groups per signup time
-    # libraries_per_signup_time = list()
-    # for i in libraries:
-    #     time = i.get_signup_time()
-    #     assigned = False
-    #     for signupTime_lib in libraries_per_signup_time:
-    #         if signupTime_lib[0] == time:
-    #             signupTime_lib[1].append(i)
-    #             assigned = True
-    #             break
-    #     if assigned == False:
-    #         libraries_per_signup_time.append([i.get_signup_time(), [i]])
-    #
-    # # order libraries in groups by
-    # for signupTime_lib in libraries_per_signup_time:
-    #     signupTime_lib[1].sort(key=lambda lib: lib.get_scan_limit())
-    #
-    # libraries_per_signup_time.sort(key=lambda iter: iter[0])
-    #
-    # # actually put everything in one list
-    # signupVolgorde = list()
-    # for signupTime_lib in libraries_per_signup_time:
-    #     for lib in signupTime_lib[1]:
-    #         signupVolgorde.append(lib)
+
 
     return libraries
 
