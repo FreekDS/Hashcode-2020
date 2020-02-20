@@ -21,7 +21,7 @@ class Outputter:
                 file.write(str(lib.get_id()) + " " + str(len(lib.books)))   # lib id + book amount
                 file.write("\n")
                 line = str()
-                for book in lib.books:
+                for book in lib.order:  # important to check if this is correct
                     line += str(book) + " "
                 file.write(line)    # if scoring complains of whitespaces, remove last char of line (is whitespace
                 file.write("\n")

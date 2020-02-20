@@ -19,7 +19,7 @@ print(r"""
 """)
 # filename="a_example"
 # filename="b_read_on"
-# filename="c_incunabula"
+filename="c_incunabula"
 # filename="d_tough_choices"
 # filename="e_so_many_books"
 # filename="f_libraries_of_the_world"
@@ -32,6 +32,28 @@ def orderLibraries(daysamount,pointsamount,libraries):
         signupVolgorde.append(i)
     return signupVolgorde
 
+
+def orderLibraries2(day_count, book_points, libaries: list):
+    libaries.sort(key=lambda lib: lib.get_signup_time())
+
+    count = 0
+    result = list()
+    for lib in libaries:
+        lib.books.sort(key=lambda book: book_points[book], reverse=True)
+        count += lib.get_signup_time()
+        if count >= day_count:
+            break
+
+        book_counter = 0
+        while book_counter < lib.get_scan_limit():
+            lib.order.append(lib.books[book_counter])
+            book_counter += 1
+
+        result.append(lib)
+
+    return result
+
+
 def algorithms(input):
     firsline=input.readline()
     splitted=firsline.split()
@@ -39,13 +61,13 @@ def algorithms(input):
     booksAmount=int(splitted[0])
     libraryAmount=int(splitted[1])
     daysAmount=int(splitted[2])
-    print("%s %s %s" %(booksAmount,libraryAmount,daysAmount))
+    #print("%s %s %s" %(booksAmount,libraryAmount,daysAmount))
 
     pointslist=list()
 
     for i in input.readline().split():
         pointslist.append(int(i))
-    print(pointslist)
+    #print(pointslist)
 
     libraries=list()
     line=f.readline()
@@ -67,12 +89,13 @@ def algorithms(input):
         line=f.readline()
         counter+=1
     for i in libraries:
-        print(i)
+        pass
+        #print(i)
 
 
-    signupVolgorde=orderLibraries(daysAmount,pointslist,libraries)
+    signupVolgorde=orderLibraries2(daysAmount,pointslist,libraries)
 
-    outputter =Outputter(libraries)
+    outputter = Outputter(signupVolgorde)
     outputter.generate_file("./output/"+filename+".txt",list())
 
 
