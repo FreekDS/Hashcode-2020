@@ -50,6 +50,7 @@ def orderLibraries2(day_count, book_points, libaries: list):
             book_counter += 1
 
         result.append(lib)
+        print(lib)
 
     return result
 

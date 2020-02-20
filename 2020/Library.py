@@ -1,4 +1,4 @@
-
+import copy
 
 class Library:
     def __init__(self, book_count: int, signup_time: int, scan_limit: int, id: int):
@@ -13,8 +13,8 @@ class Library:
         self.books.append(book)
 
     def add_books(self, books):
-        self.books=(books)
-        self.order=(books)
+        self.books=copy.deepcopy(books)
+        self.order=copy.deepcopy(books)
 
     def get_scan_limit(self):
         return self.scan_limit
