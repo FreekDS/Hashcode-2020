@@ -63,7 +63,7 @@ def orderLibraries2(day_count, book_points, libaries: list):
     count = 0
     result = list()
     for lib in libaries:
-        lib.books.sort(key=lambda book: book_points[book], reverse=true)
+        lib.books.sort(key=lambda book: book_points[book], reverse=True)
         count += lib.get_signup_time()
         if count >= day_count:
             break
