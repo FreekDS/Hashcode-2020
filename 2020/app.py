@@ -106,5 +106,3 @@ def algorithms(input):
 if  __name__ == "__main__":
     f=open("./input/"+filename+".txt")
     algorithms(f)
-
-
