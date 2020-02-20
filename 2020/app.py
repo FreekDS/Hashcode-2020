@@ -22,7 +22,7 @@ print(r"""
 files = ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"]
 disable = False
 
-filename="a_example"
+filename = "a_example"
 # filename="b_read_on"
 # filename="c_incunabula"
 # filename="d_tough_choices"
@@ -59,7 +59,31 @@ def orderLibraries(daysamount, pointsamount, libraries):
         for lib in signupTime_lib[1]:
             signupVolgorde.append(lib)
 
+
     return signupVolgorde
+
+
+def filterBooks(libraries):
+    setje = set()
+    counter = 0
+    removelijstje = list()
+    for i in libraries:
+        removelijstje.append(list())
+    while True:
+        donesomething=False
+        for idx, i in enumerate(libraries):
+            if(len(i.order)>counter):
+                donesomething=True
+                if (i.order[counter] in setje):
+                    removelijstje[idx].append(i.order[counter])
+                else:
+                    setje.add(i.order[counter])
+        counter+=1
+        if(not donesomething):
+            break
+    for idx, i in enumerate(libraries):
+        i.order = [x for x in i.order if x not in removelijstje[idx]]
+    return libraries
 
 
 def orderLibraries2(day_count, book_points, libaries: list):
@@ -84,62 +108,59 @@ def orderLibraries2(day_count, book_points, libaries: list):
         result.append(lib)
         # print(lib)
 
-    return result
+    return filterBooks(result)
 
 
-def algorithms(input,fileke):
-    firsline=input.readline()
-    splitted=firsline.split()
+def algorithms(input, fileke):
+    print(fileke)
+    firsline = input.readline()
+    splitted = firsline.split()
 
-    booksAmount=int(splitted[0])
-    libraryAmount=int(splitted[1])
-    daysAmount=int(splitted[2])
-    #print("%s %s %s" %(booksAmount,libraryAmount,daysAmount))
+    booksAmount = int(splitted[0])
+    libraryAmount = int(splitted[1])
+    daysAmount = int(splitted[2])
+    # print("%s %s %s" %(booksAmount,libraryAmount,daysAmount))
 
-    pointslist=list()
+    pointslist = list()
 
     for i in input.readline().split():
         pointslist.append(int(i))
-    #print(pointslist)
+    # print(pointslist)
 
-    libraries=list()
-    line=f.readline()
+    libraries = list()
+    line = f.readline()
     counter = 0
-    while line!="" and line!="\n":
+    while line != "" and line != "\n":
 
-        split=line.split()
+        split = line.split()
         templist = list()
-        a=int(split[0])
-        b=int(split[1])
-        c=int(split[2])
-        library = Library(a,b,c,counter)
-        line=f.readline()
-        templist=list()
+        a = int(split[0])
+        b = int(split[1])
+        c = int(split[2])
+        library = Library(a, b, c, counter)
+        line = f.readline()
+        templist = list()
         for i in line.split():
             templist.append(int(i))
         library.add_books(templist)
         libraries.append(library)
-        line=f.readline()
-        counter+=1
+        line = f.readline()
+        counter += 1
     for i in libraries:
         pass
-        #print(i)
+        # print(i)
 
-
-    signupVolgorde=orderLibraries2(daysAmount,pointslist,libraries)
+    signupVolgorde = orderLibraries2(daysAmount, pointslist, libraries)
 
     outputter = Outputter(signupVolgorde)
-    outputter.generate_file("./output/"+fileke+".txt",list())
+    outputter.generate_file("./output/" + fileke + ".txt", list())
 
 
-if  __name__ == "__main__":
+if __name__ == "__main__":
     if disable:
-        with open("./input/"+filename+".txt") as f:
-            algorithms(f,filename)
+        with open("./input/" + filename + ".txt") as f:
+            algorithms(f, filename)
     else:
         for file in files:
-            with open("./input/"+file+".txt") as f:
-                algorithms(f,file)
-
-
-
+            with open("./input/" + file + ".txt") as f:
+                algorithms(f, file)
