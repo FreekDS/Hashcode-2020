@@ -22,19 +22,43 @@ filename="a_example"
 # filename="c_incunabula"
 # filename="d_tough_choices"
 # filename="e_so_many_books"
-# filename="f_libraries_of_the_world"
+#filename="f_libraries_of_the_world"
+
 from Library import *
 from Outputgenerator import *
 
-def orderLibraries(daysamount,pointsamount,libraries):
-    signupVolgorde=list()
+
+def orderLibraries(daysamount, pointsamount, libraries):
+    # order libraries in groups per signup time
+    libraries_per_signup_time = list()
     for i in libraries:
-        signupVolgorde.append(i)
+        time = i.get_signup_time()
+        assigned = False
+        for signupTime_lib in libraries_per_signup_time:
+            if signupTime_lib[0] == time:
+                signupTime_lib[1].append(i)
+                assigned = True
+                break
+        if assigned == False:
+            libraries_per_signup_time.append([i.get_signup_time(), [i]])
+
+    # order libraries in groups by
+    for signupTime_lib in libraries_per_signup_time:
+        signupTime_lib[1].sort(key=lambda lib: lib.get_scan_limit())
+
+    libraries_per_signup_time.sort(key=lambda iter: iter[0])
+
+    # actually put everything in one list
+    signupVolgorde = list()
+    for signupTime_lib in libraries_per_signup_time:
+        for lib in signupTime_lib[1]:
+            signupVolgorde.append(lib)
+
     return signupVolgorde
 
 
 def orderLibraries2(day_count, book_points, libaries: list):
-    libaries.sort(key=lambda lib: lib.get_signup_time())
+    libaries = orderLibraries(day_count, book_points, libaries)
 
     count = 0
     result = list()
