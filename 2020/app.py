@@ -17,12 +17,12 @@ print(r"""
  ----------`"`  `"``--------\|/----\|/-----
 
 """)
-filename="a_example"
+# filename="a_example"
 # filename="b_read_on"
 # filename="c_incunabula"
 # filename="d_tough_choices"
 # filename="e_so_many_books"
-#filename="f_libraries_of_the_world"
+# filename="f_libraries_of_the_world"
 
 from Library import *
 from Outputgenerator import *
@@ -58,8 +58,8 @@ def orderLibraries(daysamount, pointsamount, libraries):
 
 
 def orderLibraries2(day_count, book_points, libaries: list):
-    libaries = orderLibraries(day_count, book_points, libaries)
-
+    # libaries = orderLibraries(day_count, book_points, libaries)
+    libaries.sort(key=lambda lib: lib.getviabality(book_points))
     count = 0
     result = list()
     for lib in libaries:

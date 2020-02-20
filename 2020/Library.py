@@ -25,6 +25,15 @@ class Library:
     def get_books(self):
         return self.books
 
+    def getviabality(self,bookscores):
+        scores=0
+        for i in self.books:
+            scores+=bookscores[i]
+
+        scores=(scores/len(self.books))*self.scan_limit
+        return scores
+
+
     def __str__(self):
         return "id "+str(self.id)+" :"+str(self.book_count)+" "+str(+self.signup_time)+" "+str(self.scan_limit)+" "+str(self.books)
 
