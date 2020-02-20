@@ -14,7 +14,7 @@ class Library:
 
     def add_books(self, books):
         self.books=copy.deepcopy(books)
-        self.order=copy.deepcopy(books)
+        self.order=list()
 
     def get_scan_limit(self):
         return self.scan_limit
