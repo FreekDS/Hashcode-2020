@@ -18,7 +18,11 @@ print(r"""
 
 """)
 # filename="a_example"
-filename="b_read_on"
+# filename="b_read_on"
+# filename="c_incunabula"
+# filename="d_tough_choices"
+# filename="e_so_many_books"
+# filename="f_libraries_of_the_world"
 from Library import *
 from Outputgenerator import *
 
@@ -46,7 +50,7 @@ def algorithms(input):
     libraries=list()
     line=f.readline()
     counter = 0
-    while line!="":
+    while line!="" and line!="\n":
 
         split=line.split()
         templist = list()
