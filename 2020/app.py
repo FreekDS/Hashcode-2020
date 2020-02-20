@@ -21,10 +21,11 @@ filename="aaaaaaa"
 
 
 def algorithms(input):
+    gerief=input.read()
     return
 
 if  __name__ == "__main__":
-    f=open("./input/"+filename+".in").read()
+    f=open("./input/"+filename+".in")
     algorithms(f)
     print(f)
 
