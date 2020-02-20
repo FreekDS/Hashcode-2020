@@ -17,3 +17,15 @@ print(r"""
  ----------`"`  `"``--------\|/----\|/-----
 
 """)
+filename="aaaaaaa"
+
+
+def algorithms(input):
+    gerief=input.read()
+    return
+
+if  __name__ == "__main__":
+    f=open("./input/"+filename+".txt")
+    algorithms(f)
+    print(f)
+
