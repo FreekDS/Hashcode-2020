@@ -2,11 +2,12 @@ from Book import Book
 
 
 class Library:
-    def __init__(self, book_count, signup_time, scan_limit):
+    def __init__(self, book_count: int, signup_time: int, scan_limit: int, id: int):
         self.scan_limit = scan_limit
         self.book_count = book_count
         self.signup_time = signup_time
         self.books = list()
+        self.id = id
 
     def add_book(self, book: Book):
         self.books.append(book)
@@ -19,3 +20,6 @@ class Library:
 
     def get_books(self):
         return self.books
+
+    def get_id(self):
+        return self.id
