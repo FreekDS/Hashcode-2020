@@ -64,6 +64,28 @@ def orderLibraries(daysamount, pointsamount, libraries):
 
     return libraries
 
+def filterBooks(libraries):
+    setje = set()
+    counter = 0
+    removelijstje = list()
+    for i in libraries:
+        removelijstje.append(list())
+    while True:
+        donesomething=False
+        for idx, i in enumerate(libraries):
+            if(len(i.order)>counter):
+                donesomething=True
+                if (i.order[counter] in setje):
+                    removelijstje[idx].append(i.order[counter])
+                else:
+                    setje.add(i.order[counter])
+        counter+=1
+        if(not donesomething):
+            break
+    for idx, i in enumerate(libraries):
+        i.order = [x for x in i.order if x not in removelijstje[idx]]
+    return libraries
+
 
 def orderLibraries2(day_count, book_points, libaries: list):
     libaries = orderLibraries(day_count, book_points, libaries)
@@ -87,7 +109,7 @@ def orderLibraries2(day_count, book_points, libaries: list):
         result.append(lib)
         # print(lib)
 
-    return result
+    return filterBooks(result)
 
 
 def algorithms(input,fileke):
