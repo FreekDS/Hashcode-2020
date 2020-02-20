@@ -17,3 +17,14 @@ print(r"""
  ----------`"`  `"``--------\|/----\|/-----
 
 """)
+filename="aaaaaaa"
+
+
+def algorithms(input):
+    return
+
+if  __name__ == "__main__":
+    f=open("./input/"+filename+".in").read()
+    algorithms(f)
+    print(f)
+
