@@ -25,7 +25,7 @@ def algorithms(input):
     return
 
 if  __name__ == "__main__":
-    f=open("./input/"+filename+".in")
+    f=open("./input/"+filename+".txt")
     algorithms(f)
     print(f)
 
