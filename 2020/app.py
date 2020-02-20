@@ -18,6 +18,11 @@ print(r"""
 
 """)
 # filename="a_example"
+
+files = ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"]
+disable = False
+
+# filename="a_example"
 # filename="b_read_on"
 # filename="c_incunabula"
 # filename="d_tough_choices"
@@ -69,9 +74,9 @@ def orderLibraries2(day_count, book_points, libaries: list):
             break
 
         book_counter = 0
-        while book_counter < lib.get_scan_limit():
+        while book_counter < lib.get_scan_limit()-1:
             if book_counter >= len(lib.books):
-                break
+                continue
             lib.order.append(lib.books[book_counter])
             book_counter += 1
 
@@ -126,9 +131,14 @@ def algorithms(input):
     outputter.generate_file("./output/"+filename+".txt",list())
 
 
-
-
-
 if  __name__ == "__main__":
-    f=open("./input/"+filename+".txt")
-    algorithms(f)
+    if disable:
+        with open("./input/"+filename+".txt") as f:
+            algorithms(f)
+    else:
+        for file in files:
+            with open("./input/"+file+".txt") as f:
+                algorithms(f)
+
+
+
