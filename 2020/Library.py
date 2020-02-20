@@ -31,6 +31,7 @@ class Library:
             scores+=bookscores[i]
 
         scores=(scores/len(self.books))*self.scan_limit
+        print(scores)
         return scores
 
 
