@@ -63,8 +63,8 @@ def orderLibraries(daysamount, pointsamount, libraries):
 
 
 def orderLibraries2(day_count, book_points, libaries: list):
-    # libaries = orderLibraries(day_count, book_points, libaries)
-    libaries.sort(key=lambda lib: lib.getviabality(book_points))
+    libaries = orderLibraries(day_count, book_points, libaries)
+    # libaries.sort(key=lambda lib: lib.getviabality(book_points))
     count = 0
     result = list()
     for lib in libaries:
