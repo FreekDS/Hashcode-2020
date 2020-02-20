@@ -17,6 +17,10 @@ print(r"""
  ----------`"`  `"``--------\|/----\|/-----
 
 """)
+
+files = ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"]
+disable = False
+
 filename="a_example"
 # filename="b_read_on"
 # filename="c_incunabula"
@@ -129,7 +133,13 @@ def algorithms(input):
 
 
 if  __name__ == "__main__":
-    f=open("./input/"+filename+".txt")
-    algorithms(f)
+    if disable:
+        with open("./input/"+filename+".txt") as f:
+            algorithms(f)
+    else:
+        for file in files:
+            with open("./input/"+file+".txt") as f:
+                algorithms(f)
+
 
 
