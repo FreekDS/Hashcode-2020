@@ -1,4 +1,3 @@
-from Book import Book
 
 
 class Library:
@@ -8,12 +7,14 @@ class Library:
         self.signup_time = signup_time
         self.books = list()
         self.id = id
+        self.order = list()
 
     def add_book(self, book):
         self.books.append(book)
 
     def add_books(self, books):
         self.books=(books)
+        self.order=(books)
 
     def get_scan_limit(self):
         return self.scan_limit
@@ -25,8 +26,10 @@ class Library:
         return self.books
 
     def __str__(self):
-        return str(self.book_count)+" "+str(+self.signup_time)+" "+str(self.scan_limit)+" "+str(self.books)
+        return "id "+str(self.id)+" :"+str(self.book_count)+" "+str(+self.signup_time)+" "+str(self.scan_limit)+" "+str(self.books)
 
     def get_id(self):
         return self.id
+
+
 

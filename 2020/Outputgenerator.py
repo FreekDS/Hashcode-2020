@@ -15,10 +15,13 @@ class Outputter:
 
     def generate_file(self, filename, all_books):
         with open(filename, 'w') as file:
-            file.write(str(len(self.libraries)))    # lib count
+            file.write(str(len(self.libraries)))  # lib count
+            file.write("\n")
             for lib in self.libraries:
                 file.write(str(lib.get_id()) + " " + str(len(lib.books)))   # lib id + book amount
+                file.write("\n")
                 line = str()
                 for book in lib.books:
                     line += str(book) + " "
                 file.write(line)    # if scoring complains of whitespaces, remove last char of line (is whitespace
+                file.write("\n")

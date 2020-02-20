@@ -17,8 +17,10 @@ print(r"""
  ----------`"`  `"``--------\|/----\|/-----
 
 """)
-filename="a_example"
+# filename="a_example"
+filename="b_read_on"
 from Library import *
+from Outputgenerator import *
 
 def orderLibraries(daysamount,pointsamount,libraries):
     signupVolgorde=list()
@@ -36,12 +38,14 @@ def algorithms(input):
     print("%s %s %s" %(booksAmount,libraryAmount,daysAmount))
 
     pointslist=list()
+
     for i in input.readline().split():
         pointslist.append(int(i))
     print(pointslist)
 
     libraries=list()
     line=f.readline()
+    counter = 0
     while line!="":
 
         split=line.split()
@@ -49,7 +53,7 @@ def algorithms(input):
         a=int(split[0])
         b=int(split[1])
         c=int(split[2])
-        library = Library(a,b,c)
+        library = Library(a,b,c,counter)
         line=f.readline()
         templist=list()
         for i in line.split():
@@ -57,10 +61,15 @@ def algorithms(input):
         library.add_books(templist)
         libraries.append(library)
         line=f.readline()
+        counter+=1
     for i in libraries:
         print(i)
 
+
     signupVolgorde=orderLibraries(daysAmount,pointslist,libraries)
+
+    outputter =Outputter(libraries)
+    outputter.generate_file("./output/"+filename+".txt",list())
 
 
 
