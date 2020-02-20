@@ -19,10 +19,10 @@ print(r"""
 """)
 # filename="a_example"
 # filename="b_read_on"
-filename="c_incunabula"
+# filename="c_incunabula"
 # filename="d_tough_choices"
 # filename="e_so_many_books"
-# filename="f_libraries_of_the_world"
+filename="f_libraries_of_the_world"
 from Library import *
 from Outputgenerator import *
 
@@ -45,12 +45,14 @@ def orderLibraries2(day_count, book_points, libaries: list):
             break
 
         book_counter = 0
-        while book_counter < lib.get_scan_limit():
+        while book_counter < lib.get_scan_limit()-1:
+            if book_counter >= len(lib.books):
+                continue
             lib.order.append(lib.books[book_counter])
             book_counter += 1
 
         result.append(lib)
-        print(lib)
+        # print(lib)
 
     return result
 
