@@ -1,3 +1,5 @@
+import random
+
 print(r"""
      ______________________________
     |                              | 
@@ -34,8 +36,7 @@ from Outputgenerator import *
 
 
 def orderLibraries(daysamount, pointsamount, libraries):
-    libraries.sort(key=lambda lib: (lib.get_scan_limit() / lib.get_signup_time()), reverse=True)
-    libraries
+    libraries.sort(key=lambda lib: ((len(lib.books) / lib.get_scan_limit()) / lib.get_signup_time()), reverse=True)
     # order libraries in groups per signup time
     # libraries_per_signup_time = list()
     # for i in libraries:
