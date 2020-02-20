@@ -17,12 +17,12 @@ print(r"""
  ----------`"`  `"``--------\|/----\|/-----
 
 """)
-# filename="a_example"
+filename="a_example"
 # filename="b_read_on"
 # filename="c_incunabula"
 # filename="d_tough_choices"
 # filename="e_so_many_books"
-filename="f_libraries_of_the_world"
+# filename="f_libraries_of_the_world"
 from Library import *
 from Outputgenerator import *
 
@@ -39,15 +39,15 @@ def orderLibraries2(day_count, book_points, libaries: list):
     count = 0
     result = list()
     for lib in libaries:
-        lib.books.sort(key=lambda book: book_points[book], reverse=True)
+        lib.books.sort(key=lambda book: book_points[book], reverse=true)
         count += lib.get_signup_time()
         if count >= day_count:
             break
 
         book_counter = 0
-        while book_counter < lib.get_scan_limit()-1:
+        while book_counter < lib.get_scan_limit():
             if book_counter >= len(lib.books):
-                continue
+                break
             lib.order.append(lib.books[book_counter])
             book_counter += 1
 

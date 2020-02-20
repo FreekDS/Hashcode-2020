@@ -18,7 +18,7 @@ class Outputter:
             file.write(str(len(self.libraries)))  # lib count
             file.write("\n")
             for lib in self.libraries:
-                file.write(str(lib.get_id()) + " " + str(len(lib.books)))   # lib id + book amount
+                file.write(str(lib.get_id()) + " " + str(len(lib.order)))   # lib id + book amount
                 file.write("\n")
                 line = str()
                 for book in lib.order:
